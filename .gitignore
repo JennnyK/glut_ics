@@ -1,0 +1,37 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# --- 打包 / 分发 ---
+build/
+dist/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- 虚拟环境 ---
+.venv/
+venv/
+env/
+
+# --- 测试 / 覆盖率 ---
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.ruff_cache/
+
+# --- 编辑器 / 操作系统 ---
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- 本项目生成物（含真实课表，勿提交）---
+schedule.ics
+schedule_expanded.ics
+*.ics.tmp

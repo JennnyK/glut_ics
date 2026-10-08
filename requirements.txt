@@ -1,0 +1,3 @@
+# glut-ics 运行时零第三方依赖，仅使用 Python 标准库（urllib / http.cookiejar / re / html / datetime 等）。
+# 因此本文件为空是刻意为之：pip install -r requirements.txt 不会安装任何内容。
+# 开发/测试所需的可选依赖见 requirements-dev.txt。

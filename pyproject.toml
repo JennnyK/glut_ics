@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "glut-ics"
+version = "1.0.0"
+description = "桂林理工大学课表 → 标准 iCalendar(.ics)，可直接导入 Google/Apple/Outlook 日历"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "JennnyK" }]
+keywords = ["glut", "icalendar", "ics", "schedule", "timetable", "课表", "桂林理工大学"]
+dependencies = []
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Scheduling",
+    "Natural Language :: Chinese (Simplified)",
+]
+
+[project.urls]
+Homepage = "https://github.com/JennnyK/glut_ics"
+Repository = "https://github.com/JennnyK/glut_ics"
+Issues = "https://github.com/JennnyK/glut_ics/issues"
+Changelog = "https://github.com/JennnyK/glut_ics/blob/main/CHANGELOG.md"
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "icalendar>=5.0"]
+
+[project.scripts]
+glut-ics = "glut_ics.cli:main"
+
+[tool.setuptools]
+packages = ["glut_ics"]
+
+[tool.setuptools.package-data]
+glut_ics = ["py.typed"]
