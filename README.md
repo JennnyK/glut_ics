@@ -104,6 +104,13 @@ python -m glut_ics --help
 
 ## 使用方法
 
+> 💡 **如果你是桂林校区，推荐使用这条指令即可**（`--expand` 会把每一次课写成独立事件，
+> 兼容不展开重复规则的日历程序，导入后显示最完整）：
+>
+> ```bash
+> python -m glut_ics --username 你的学号 --expand -o schedule_expanded.ics
+> ```
+
 ### 1. 在线模式（登录直连抓取）
 
 ```bash

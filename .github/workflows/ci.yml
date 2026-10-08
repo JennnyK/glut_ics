@@ -8,8 +8,13 @@ on:
 
 jobs:
   test:
-    name: tests (Python ${{ matrix.python-version }})
+    name: tests (${{ matrix.os }} / Python ${{ matrix.python-version }})
     runs-on: ${{ matrix.os }}
+    # Windows 运行器的默认控制台编码不是 UTF-8，输出含中文的帮助信息会抛
+    # UnicodeEncodeError；开启 UTF-8 模式保证跨平台输出一致。
+    env:
+      PYTHONUTF8: "1"
+      PYTHONIOENCODING: "utf-8"
     strategy:
       fail-fast: false
       matrix:

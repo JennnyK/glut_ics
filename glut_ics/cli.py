@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import getpass
 import os
+import sys
 from datetime import date
 from pathlib import Path
 from typing import Optional
@@ -151,7 +152,27 @@ def _run_validate_only(args) -> int:
     return 0
 
 
+def _configure_console_encoding() -> None:
+    """避免在非 UTF-8 控制台下打印中文帮助时崩溃。
+
+    Windows 英文环境的默认控制台编码为 cp1252，此时 argparse 打印含中文的
+    ``--help`` 会抛 ``UnicodeEncodeError`` 并以退出码 1 结束。这里把标准流的
+    编码错误策略放宽为 ``replace``，保证命令始终可用；若流的编码本身支持中文
+    （如 UTF-8 / GBK）则输出不受影响。不使用 ``reconfigure`` 的流（如测试中的
+    ``io.StringIO``）会被直接跳过。
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is None:
+            continue
+        try:
+            reconfigure(errors="replace")
+        except (ValueError, OSError):
+            pass
+
+
 def main(argv=None) -> int:
+    _configure_console_encoding()
     args = build_argument_parser().parse_args(argv)
 
     if args.validate_only:
